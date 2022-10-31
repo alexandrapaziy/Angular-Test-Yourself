@@ -1,0 +1,39 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Read the instuctions of this page carefuly
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            One step more to go
+                        </mat-card-subtitle>
+                    </mat-card-header>
+
+                    <mat-card-content class="ml20">
+                        <h1 [innerHTML]="test.title">{{test.title}}</h1>
+                        <p [innerHTML]="test.description"></p>
+
+                        <mat-divider></mat-divider>
+                        <br>
+                        <h1>Important Instructions</h1>
+
+                        <ul>
+                            <li>This test is only for practice purpose.</li>
+                            <li>You have to submit test with in <b>{{ getFormatedTime() }}.</b></li>
+                            <li>You can attemp the test any numbers of time.</li>
+                            <li>There are <b>{{question_membership}} questions</b> in this test.</li>
+                            <li>There can be questions of common, compliance and open types. </li>
+                        </ul>
+                    </mat-card-content>
+
+                    <mat-card-actions class="text-center">
+                        <button mat-raised-button color="primary" (click)="startTest()">START</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

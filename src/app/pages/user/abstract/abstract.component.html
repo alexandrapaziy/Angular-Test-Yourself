@@ -1,0 +1,31 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Read the conspect of this unit carefuly
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            One step more to go
+                        </mat-card-subtitle>
+                    </mat-card-header>
+
+                    <mat-card-content class="ml20">
+                        <h1>{{test.title}}</h1>
+
+                        <mat-divider></mat-divider>
+                        <br>
+                        <h1 [innerHTML]="test.abstraction"></h1>
+                    </mat-card-content>
+
+                    <mat-card-actions class="text-center">
+                        <button mat-raised-button color="primary"
+                            [routerLink]="'/user-dashboard/instructions/' + test.testId">NEXT</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

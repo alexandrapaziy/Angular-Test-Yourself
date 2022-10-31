@@ -1,0 +1,54 @@
+<mat-card>
+    <h1>UPDATE TEST</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+                <form *ngIf="test" (submit)="updateTest()">
+                    <mat-form-field class="w100" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input [(ngModel)]="test.title" type="text" name="title" required matInput
+                            placeholder="enter a test title" />
+                    </mat-form-field>
+
+                    <p>description:</p>
+                    <ckeditor [editor]="Editor" name="description" [(ngModel)]="test.description">
+                    </ckeditor>
+
+
+                    <mat-form-field class="w100 mt20" appearance="fill">
+                        <mat-label>Max mark</mat-label>
+                        <input [(ngModel)]="test.maxMark" type="text" name="maxMark" matInput
+                            placeholder="enter a max mark" />
+                    </mat-form-field>
+
+
+                    <mat-form-field class="mt20 w100" appearance="fill">
+                        <mat-label>Category</mat-label>
+                        <mat-select [(ngModel)]="test.category.categoryId" name="category" required>
+                            <mat-option *ngFor="let c of categories" [value]="c.categoryId">
+                                {{c.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <p>abstraction:</p>
+                    <ckeditor [editor]="Editor" name="abstraction" [(ngModel)]="test.abstraction">
+                    </ckeditor>
+
+                    <br>
+                    <mat-slide-toggle name="active" [(ngModel)]="test.active" class="mt20">
+                        Publish status
+                    </mat-slide-toggle>
+
+                    <div class="container text-center mt20">
+                        <button mat-raised-button color="primary" type="submit">
+                            UPDATE TEST
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</mat-card>

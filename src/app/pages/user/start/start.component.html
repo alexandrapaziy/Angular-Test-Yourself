@@ -1,0 +1,240 @@
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2">
+                <mat-card style="margin-top: 70px;">
+                    <mat-card-header>
+                        <mat-card-title>
+                            INSTRUCTIONS
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            some rules:
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <ul>
+                            <li>Do not refresh the page, otherwise you will get new questions in this test.</li>
+                            <li>Do not switch the tabs.</li>
+                            <li>Do not minimize the window.</li>
+                        </ul>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div class="col-md-8">
+                <ng-container>
+                    <h1 class="mt20">ON GOING TEST <b [innerHTML]="test.title"></b></h1>
+                </ng-container>
+
+                <mat-card *ngFor="let q of common_questions; let i=index" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <mat-divider class="mt20 mb20"></mat-divider>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input *ngIf="q.option1" type="radio" [value]="q.option1" [name]="''+i" [(ngModel)]="q.givenAnswer" />
+                                {{q.option1}}
+                            </div>
+                            <div class="col-md-2">
+                                <input *ngIf="q.option2" type="radio" [value]="q.option2" [name]="''+i" [(ngModel)]="q.givenAnswer" />
+                                {{q.option2}}
+                            </div>
+                            <div class="col-md-2">
+                                <input *ngIf="q.option3" type="radio" [value]="q.option3" [name]="''+i" [(ngModel)]="q.givenAnswer" />
+                                {{q.option3}}
+                            </div>
+                            <div class="col-md-2">
+                                <input *ngIf="q.option4" type="radio" [value]="q.option4" [name]="''+i" [(ngModel)]="q.givenAnswer" />
+                                {{q.option4}}
+                            </div>
+                            <div class="col-md-2">
+                                <input *ngIf="q.option5" type="radio" [value]="q.option5" [name]="''+i" [(ngModel)]="q.givenAnswer" />
+                                {{q.option5}}
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+
+
+
+
+
+
+
+                <mat-card *ngFor="let q of compliance_questions; let i=index" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <mat-divider class="mt20 mb20"></mat-divider>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><b class="mr20">1.</b>{{q.option1}}</p>
+                                <p><b class="mr20">2.</b>{{q.option2}}</p>
+                                <p><b class="mr20">3.</b>{{q.option3}}</p>
+                                <p><b class="mr20">4.</b>{{q.option4}}</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p><b class="mr20">A.</b>{{q.optionA}}</p>
+                                <p><b class="mr20">B.</b>{{q.optionB}}</p>
+                                <p><b class="mr20">C.</b>{{q.optionC}}</p>
+                                <p><b class="mr20">D.</b>{{q.optionD}}</p>
+                                <p><b class="mr20">E.</b>{{q.optionE}}</p>
+                            </div>
+                        </div>
+
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>select answer for option 1</mat-label>
+                            <mat-select [(ngModel)]="q.givenAnswer1" name="givenAnswer1">
+                                <mat-option *ngIf="q.optionA" [value]="q.optionA">
+                                    {{q.optionA}}</mat-option>
+                                <mat-option *ngIf="q.optionB" [value]="q.optionB">
+                                    {{q.optionB}}</mat-option>
+                                <mat-option *ngIf="q.optionC" [value]="q.optionC">
+                                    {{q.optionC}}</mat-option>
+                                <mat-option *ngIf="q.optionD" [value]="q.optionD">
+                                    {{q.optionD}}</mat-option>
+                                <mat-option *ngIf="q.optionE" [value]="q.optionE">
+                                    {{q.optionE}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>select answer for option 2</mat-label>
+                            <mat-select [(ngModel)]="q.givenAnswer2" name="givenAnswer2">
+                                <mat-option *ngIf="q.optionA" [value]="q.optionA">
+                                    {{q.optionA}}</mat-option>
+                                <mat-option *ngIf="q.optionB" [value]="q.optionB">
+                                    {{q.optionB}}</mat-option>
+                                <mat-option *ngIf="q.optionC" [value]="q.optionC">
+                                    {{q.optionC}}</mat-option>
+                                <mat-option *ngIf="q.optionD" [value]="q.optionD">
+                                    {{q.optionD}}</mat-option>
+                                <mat-option *ngIf="q.optionE" [value]="q.optionE">
+                                    {{q.optionE}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>select answer for option 3</mat-label>
+                            <mat-select [(ngModel)]="q.givenAnswer3" name="givenAnswer3">
+                                <mat-option *ngIf="q.optionA" [value]="q.optionA">
+                                    {{q.optionA}}</mat-option>
+                                <mat-option *ngIf="q.optionB" [value]="q.optionB">
+                                    {{q.optionB}}</mat-option>
+                                <mat-option *ngIf="q.optionC" [value]="q.optionC">
+                                    {{q.optionC}}</mat-option>
+                                <mat-option *ngIf="q.optionD" [value]="q.optionD">
+                                    {{q.optionD}}</mat-option>
+                                <mat-option *ngIf="q.optionE" [value]="q.optionE">
+                                    {{q.optionE}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>select answer for option 4</mat-label>
+                            <mat-select [(ngModel)]="q.givenAnswer4" name="givenAnswer4">
+                                <mat-option *ngIf="q.optionA" [value]="q.optionA">
+                                    {{q.optionA}}</mat-option>
+                                <mat-option *ngIf="q.optionB" [value]="q.optionB">
+                                    {{q.optionB}}</mat-option>
+                                <mat-option *ngIf="q.optionC" [value]="q.optionC">
+                                    {{q.optionC}}</mat-option>
+                                <mat-option *ngIf="q.optionD" [value]="q.optionD">
+                                    {{q.optionD}}</mat-option>
+                                <mat-option *ngIf="q.optionE" [value]="q.optionE">
+                                    {{q.optionE}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </mat-card-content>
+                </mat-card>
+
+
+
+
+
+
+                <mat-card *ngFor="let q of open_questions; let i=index" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <mat-divider class="mt20 mb20"></mat-divider>
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <input matInput type="text" [name]="''+i" [(ngModel)]="q.givenAnswer" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+
+                <div class="container text-center mt20 mb20">
+                    <button (click)="submitTest()" mat-raised-button color="primary">SUBMIT TEST</button>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-2">
+
+                <mat-card style="margin-top: 70px;">
+                    <mat-card-header>
+                        <mat-card-title>
+                            PROGRESS
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            Test will be automatically submited when timer reaches to <b>0 min : 0 sec</b>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h1 class="text-center">{{getFormatedTime()}}</h1>
+                        <mat-spinner mode="determinate" style="margin: auto;" [value]="(timer/(10 *2 *60))*100">
+                        </mat-spinner>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <mat-card-content class="text-center">
+                        <h1>Correct answers: <b>{{correctAnswers}}</b></h1>
+                        <h1>Marks got: <b>{{marksGot}}</b></h1>
+                        <h1>Attempted: <b>{{attempted}}</b></h1>
+                    </mat-card-content>
+                    <mat-card-actions class="text-center mt20 mb20">
+                        <button mat-raised-button color="primary" (click)="printPage()">PRINT</button>
+                        <button mat-raised-button color="primary" [routerLink]="'/user-dashboard/0'">HOME</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,236 @@
+<h1 class="mt20">QUESTIONS OF <b>{{testTitle}}</b></h1>
+
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+
+            <button mat-raised-button color="primary"
+                [routerLink]="'/admin-dashboard/add-question/' + testId + '/' + testTitle">ADD QUESTION
+            </button>
+
+            <div>
+                <mat-form-field class="mt20 w100">
+                    <mat-select [(value)]="viewValue" [(ngModel)]="selected">
+                        <ng-container *ngFor="let type of types">
+                            <mat-option [value]="type.value">
+                                {{ type.value }}
+                            </mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="selected=='all'">
+                <mat-card *ngFor="let q of common_questions" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2" *ngIf="q.option1">
+                                    <p><b class="mr20">1.</b>{{q.option1}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option2">
+                                    <p><b class="mr20">2.</b>{{q.option2}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option3">
+                                    <p><b class="mr20">3.</b>{{q.option3}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option4">
+                                    <p><b class="mr20">4.</b>{{q.option4}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option5">
+                                    <p><b class="mr20">5.</b>{{q.option5}}</p>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <p class="mt20"><b>correct answer: {{q.answer}}</b></p>
+                        </div>
+
+                        <mat-card-action>
+                            <button mat-flat-button color="primary" class="ml10"
+                                (click)="deleteCommonQuestion(q.questionId)">
+                                <mat-icon mat-list-icon>delete_outline</mat-icon>
+                            </button>
+                        </mat-card-action>
+                    </mat-card-content>
+                </mat-card>
+
+                <mat-card *ngFor="let q of compliance_questions" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><b class="mr20">1.</b>{{q.option1}}</p>
+                                    <p><b class="mr20">2.</b>{{q.option2}}</p>
+                                    <p><b class="mr20">3.</b>{{q.option3}}</p>
+                                    <p><b class="mr20">4.</b>{{q.option4}}</p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <p><b class="mr20">A.</b>{{q.optionA}}</p>
+                                    <p><b class="mr20">B.</b>{{q.optionB}}</p>
+                                    <p><b class="mr20">C.</b>{{q.optionC}}</p>
+                                    <p><b class="mr20">D.</b>{{q.optionD}}</p>
+                                    <p><b class="mr20">E.</b>{{q.optionE}}</p>
+                                </div>
+                            </div>
+
+                            <mat-divider></mat-divider>
+                            <p class="mt20"><b>correct answer: 1. {{q.answer1}}; 2. {{q.answer2}}; 3. {{q.answer3}}; 4.
+                                    {{q.answer4}}.</b></p>
+                        </div>
+
+                        <mat-card-action>
+                            <button mat-flat-button color="primary" class="ml10"
+                                (click)="deleteOpenQuestion(q.questionId)">
+                                <mat-icon mat-list-icon>delete_outline</mat-icon>
+                            </button>
+                        </mat-card-action>
+                    </mat-card-content>
+                </mat-card>
+
+                <mat-card *ngFor="let q of open_questions" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <p class="mt20"><b>correct answer: {{q.answer}}</b></p>
+                        </div>
+
+                        <mat-card-action>
+                            <button mat-flat-button color="primary" class="ml10"
+                                (click)="deleteOpenQuestion(q.questionId)">
+                                <mat-icon mat-list-icon>delete_outline</mat-icon>
+                            </button>
+
+                        </mat-card-action>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="selected=='common question'">
+                <mat-card *ngFor="let q of common_questions; let i=index" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2" *ngIf="q.option1">
+                                    <p><b class="mr20">1.</b>{{q.option1}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option2">
+                                    <p><b class="mr20">2.</b>{{q.option2}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option3">
+                                    <p><b class="mr20">3.</b>{{q.option3}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option4">
+                                    <p><b class="mr20">4.</b>{{q.option4}}</p>
+                                </div>
+                                <div class="col-md-2" *ngIf="q.option5">
+                                    <p><b class="mr20">5.</b>{{q.option5}}</p>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <p class="mt20"><b>correct answer: {{q.answer}}</b></p>
+                        </div>
+
+                        <mat-card-action>
+                            <button mat-flat-button color="primary" class="ml10"
+                                (click)="deleteCommonQuestion(q.questionId)">
+                                <mat-icon mat-list-icon>delete_outline</mat-icon>
+                            </button>
+                        </mat-card-action>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="selected=='compliance question'">
+                <mat-card *ngFor="let q of compliance_questions" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><b class="mr20">1.</b>{{q.option1}}</p>
+                                    <p><b class="mr20">2.</b>{{q.option2}}</p>
+                                    <p><b class="mr20">3.</b>{{q.option3}}</p>
+                                    <p><b class="mr20">4.</b>{{q.option4}}</p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <p><b class="mr20">A.</b>{{q.optionA}}</p>
+                                    <p><b class="mr20">B.</b>{{q.optionB}}</p>
+                                    <p><b class="mr20">C.</b>{{q.optionC}}</p>
+                                    <p><b class="mr20">D.</b>{{q.optionD}}</p>
+                                    <p><b class="mr20">E.</b>{{q.optionE}}</p>
+                                </div>
+                            </div>
+
+                            <mat-divider></mat-divider>
+                            <p class="mt20"><b>correct answer: 1. {{q.answer1}}; 2. {{q.answer2}}; 3. {{q.answer3}}; 4.
+                                    {{q.answer4}}.</b></p>
+                        </div>
+
+                        <mat-card-action>
+                            <button mat-flat-button color="primary" class="ml10"
+                                (click)="deleteOpenQuestion(q.questionId)">
+                                <mat-icon mat-list-icon>delete_outline</mat-icon>
+                            </button>
+                        </mat-card-action>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="selected=='open question'">
+                <mat-card *ngFor="let q of open_questions" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <p class="mt20"><b>correct answer: {{q.answer}}</b></p>
+                        </div>
+
+                        <mat-card-action>
+                            <button mat-flat-button color="primary" class="ml10"
+                                (click)="deleteOpenQuestion(q.questionId)">
+                                <mat-icon mat-list-icon>delete_outline</mat-icon>
+                            </button>
+
+                        </mat-card-action>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<mat-card class="mt10" *ngFor="let t of tests">
+
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>
+            {{t.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{t.category.title}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content [innerHTML]="t.description">
+    </mat-card-content>
+
+    <button mat-flat-button color="primary"
+        [routerLink]="'/admin-dashboard/view-questions/' + t.testId + '/' + t.title">QUESTIONS</button>
+    <button mat-flat-button color="primary" class="ml20"
+        [routerLink]="'/admin-dashboard/test/'+ t.testId">UPDATE</button>
+    <button mat-flat-button color="primary" class="ml20" (click)="deleteTest(t.testId)">
+        <mat-icon mat-list-icon>delete_outline</mat-icon>
+    </button>
+
+</mat-card>
+
+<div class="container text-center mt20">
+    <button routerLink='/admin-dashboard/add-test' mat-raised-button color="primary">ADD NEW TEST</button>
+</div>

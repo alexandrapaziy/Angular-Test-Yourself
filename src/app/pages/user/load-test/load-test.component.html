@@ -1,0 +1,39 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <h1 class="mt20">AVAILABLE TESTS</h1>
+        <div class="row mt20" *ngIf="tests">
+            <div class="col-md-4" *ngFor="let t of tests">
+
+                <mat-card class="mb20">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title [innerHTML]="t.title">
+                            {{t.title}}
+                        </mat-card-title>
+                        <mat-card-subtitle [innerHTML]="t.category.title">
+                            {{t.category.title}}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p class="truncate" [innerHTML]="t.description">{{t.description}}</p>
+                    </mat-card-content>
+                    <mat-card-action>
+                        <button mat-button color="primary"
+                            [routerLink]="'/user-dashboard/abstract/' + t.testId">ABSTRACT</button>
+                        <button mat-button color="primary"
+                            [routerLink]="'/user-dashboard/instructions/' + t.testId">START</button>
+                    </mat-card-action>
+                </mat-card>
+
+            </div>
+
+            <div class="col-md-12" *ngIf="tests.length == 0">
+                <mat-card>
+                    <mat-card-content>
+                        <h1>NO DATA IN THIS CATEGORY</h1>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

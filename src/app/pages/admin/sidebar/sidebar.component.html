@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-action-list>
+        <div mat-subheader>MENU</div>
+        <button mat-list-item routerLink="/admin-dashboard">
+            <mat-icon mat-list-icon>home</mat-icon>
+            HOME
+        </button>
+
+        <button mat-list-item routerLink="/admin-dashboard/profile">
+            <mat-icon mat-list-icon>face</mat-icon>
+            PROFILE
+        </button>
+
+        <button mat-list-item routerLink="/admin-dashboard/categories">
+            <mat-icon mat-list-icon>library_books</mat-icon>
+            CATEGORIES
+        </button>
+
+        <button mat-list-item routerLink="/admin-dashboard/add-category">
+            <mat-icon mat-list-icon>library_add</mat-icon>
+            ADD CATEGORY
+        </button>
+
+        <button mat-list-item routerLink="/admin-dashboard/tests">
+            <mat-icon mat-list-icon>quizzes</mat-icon>
+            TESTS
+        </button>
+
+        <button mat-list-item routerLink="/admin-dashboard/add-test">
+            <mat-icon mat-list-icon>library_add</mat-icon>
+            ADD TEST
+        </button>
+
+        <button mat-list-item (click)="logout()" *ngIf="isLoggedIn">
+            <mat-icon mat-list-icon>logout</mat-icon>
+            LOGOUT
+        </button>
+    </mat-action-list>
+</mat-card>

@@ -1,0 +1,263 @@
+<div class="bootstrap-wrapper">
+    <div class="row mt20">
+        <div class="col-md-12">
+
+            <h1>ADDING QUESTION TO <span style="font-weight: bold;"> {{ testTitle }} </span></h1>
+
+            <mat-form-field class="w100">
+                <mat-select [(value)]="viewValue" [(ngModel)]="selected">
+                    <ng-container *ngFor="let type of types">
+                        <mat-option [value]="type.value">
+                            {{ type.value }}
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-subtitle>
+                        Enter the details of the new question
+                    </mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <form class="mt20" (submit)="formSubmit()">
+
+                        <div class="row mt20" *ngIf="selected=='common question'">
+                            <div class="col-md-12">
+
+                                <ckeditor [editor]="Editor" name="content" [(ngModel)]="common_question.content">
+                                </ckeditor>
+
+                                <mat-form-field class="w100 mt20" appearance="fill">
+                                    <mat-label>enter option 1</mat-label>
+                                    <input [(ngModel)]="common_question.option1" name="option1" type="text" matInput
+                                        required />
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>enter option 2</mat-label>
+                                    <input [(ngModel)]="common_question.option2" name="option2" type="text" matInput
+                                        required />
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>enter option 3</mat-label>
+                                    <input [(ngModel)]="common_question.option3" name="option3" type="text" matInput />
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>enter option 4</mat-label>
+                                    <input [(ngModel)]="common_question.option4" name="option4" type="text" matInput />
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>enter option 5</mat-label>
+                                    <input [(ngModel)]="common_question.option5" name="option5" type="text" matInput />
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>select answer</mat-label>
+                                    <mat-select required [(ngModel)]="common_question.answer" name="answer">
+                                        <mat-option *ngIf="common_question.option1" [value]="common_question.option1">
+                                            {{common_question.option1}}</mat-option>
+                                        <mat-option *ngIf="common_question.option2" [value]="common_question.option2">
+                                            {{common_question.option2}}</mat-option>
+                                        <mat-option *ngIf="common_question.option3" [value]="common_question.option3">
+                                            {{common_question.option3}}</mat-option>
+                                        <mat-option *ngIf="common_question.option4" [value]="common_question.option4">
+                                            {{common_question.option4}}</mat-option>
+                                        <mat-option *ngIf="common_question.option5" [value]="common_question.option5">
+                                            {{common_question.option5}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="container text-center">
+                                <button mat-raised-button color="primary">ADD NEW QUESTION</button>
+                            </div>
+                        </div>
+
+                        <div class="row mt20" *ngIf="selected=='compliance question'">
+                            <div class="col-md-12">
+
+                                <ckeditor [editor]="Editor" name="content" [(ngModel)]="compliance_question.content">
+                                </ckeditor>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w100 mt20" appearance="fill">
+                                            <mat-label>enter option 1</mat-label>
+                                            <input [(ngModel)]="compliance_question.option1" name="option1" type="text"
+                                                matInput required />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option 2</mat-label>
+                                            <input [(ngModel)]="compliance_question.option2" name="option2" type="text"
+                                                matInput required />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option 3</mat-label>
+                                            <input [(ngModel)]="compliance_question.option3" name="option3" type="text"
+                                                matInput />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option 4</mat-label>
+                                            <input [(ngModel)]="compliance_question.option4" name="option4" type="text"
+                                                matInput />
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w100 mt20" appearance="fill">
+                                            <mat-label>enter option A</mat-label>
+                                            <input [(ngModel)]="compliance_question.optionA" name="optionA" type="text"
+                                                matInput required />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option B</mat-label>
+                                            <input [(ngModel)]="compliance_question.optionB" name="optionB" type="text"
+                                                matInput required />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option C</mat-label>
+                                            <input [(ngModel)]="compliance_question.optionC" name="optionC" type="text"
+                                                matInput />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option D</mat-label>
+                                            <input [(ngModel)]="compliance_question.optionD" name="optionD" type="text"
+                                                matInput />
+                                        </mat-form-field>
+
+                                        <mat-form-field class="w100" appearance="fill">
+                                            <mat-label>enter option E</mat-label>
+                                            <input [(ngModel)]="compliance_question.optionE" name="optionE" type="text"
+                                                matInput />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>select answer for option 1</mat-label>
+                                    <mat-select required [(ngModel)]="compliance_question.answer1" name="answer1">
+                                        <mat-option *ngIf="compliance_question.optionA"
+                                            [value]="compliance_question.optionA">
+                                            {{compliance_question.optionA}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionB"
+                                            [value]="compliance_question.optionB">
+                                            {{compliance_question.optionB}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionC"
+                                            [value]="compliance_question.optionC">
+                                            {{compliance_question.optionC}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionD"
+                                            [value]="compliance_question.optionD">
+                                            {{compliance_question.optionD}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionE"
+                                            [value]="compliance_question.optionE">
+                                            {{compliance_question.optionE}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>select answer for option 2</mat-label>
+                                    <mat-select required [(ngModel)]="compliance_question.answer2" name="answer2">
+                                        <mat-option *ngIf="compliance_question.optionA"
+                                            [value]="compliance_question.optionA">
+                                            {{compliance_question.optionA}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionB"
+                                            [value]="compliance_question.optionB">
+                                            {{compliance_question.optionB}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionC"
+                                            [value]="compliance_question.optionC">
+                                            {{compliance_question.optionC}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionD"
+                                            [value]="compliance_question.optionD">
+                                            {{compliance_question.optionD}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionE"
+                                            [value]="compliance_question.optionE">
+                                            {{compliance_question.optionE}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>select answer for option 3</mat-label>
+                                    <mat-select [(ngModel)]="compliance_question.answer3" name="answer3">
+                                        <mat-option *ngIf="compliance_question.optionA"
+                                            [value]="compliance_question.optionA">
+                                            {{compliance_question.optionA}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionB"
+                                            [value]="compliance_question.optionB">
+                                            {{compliance_question.optionB}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionC"
+                                            [value]="compliance_question.optionC">
+                                            {{compliance_question.optionC}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionD"
+                                            [value]="compliance_question.optionD">
+                                            {{compliance_question.optionD}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionE"
+                                            [value]="compliance_question.optionE">
+                                            {{compliance_question.optionE}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="w100" appearance="fill">
+                                    <mat-label>select answer for option 4</mat-label>
+                                    <mat-select [(ngModel)]="compliance_question.answer4" name="answer4">
+                                        <mat-option *ngIf="compliance_question.optionA"
+                                            [value]="compliance_question.optionA">
+                                            {{compliance_question.optionA}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionB"
+                                            [value]="compliance_question.optionB">
+                                            {{compliance_question.optionB}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionC"
+                                            [value]="compliance_question.optionC">
+                                            {{compliance_question.optionC}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionD"
+                                            [value]="compliance_question.optionD">
+                                            {{compliance_question.optionD}}</mat-option>
+                                        <mat-option *ngIf="compliance_question.optionE"
+                                            [value]="compliance_question.optionE">
+                                            {{compliance_question.optionE}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="container text-center">
+                                <button mat-raised-button color="primary">ADD NEW QUESTION</button>
+                            </div>
+                        </div>
+
+                        <div class="row mt20" *ngIf="selected=='open question'">
+                            <div class="col-md-12">
+
+                                <ckeditor [editor]="Editor" name="content" [(ngModel)]="open_question.content">
+                                </ckeditor>
+
+                                <mat-form-field class="w100 mt20" appearance="fill">
+                                    <mat-label>enter answer</mat-label>
+                                    <input [(ngModel)]="open_question.answer" name="answer" type="text" matInput
+                                        required />
+                                </mat-form-field>
+                            </div>
+
+                            <div class="container text-center">
+                                <button mat-raised-button color="primary">ADD NEW QUESTION</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </mat-card-content>
+
+            </mat-card>
+
+        </div>
+    </div>
+</div>
