@@ -4,4 +4,4 @@ This project was created to test knowledge in various fields in the form of test
 
 The content of the site populates the user with administrator rights.
 
-Link to the site: http://testt-yourselff.s3-website.eu-central-1.amazonaws.com
+Link to the site: http://testt-yourselff.s3-website.eu-central-1.amazonaws.com/
